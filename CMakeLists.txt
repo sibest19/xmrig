@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 2.8)
 project(xmrig)
 
 option(WITH_LIBCPUID "Use Libcpuid" ON)
@@ -195,6 +195,7 @@ if (WITH_HTTPD)
         message(FATAL_ERROR "microhttpd NOT found: use `-DWITH_HTTPD=OFF` to build without http deamon support")
     endif()
 else()
+    set(MHD_LIBRARY "")
     add_definitions(/DXMRIG_NO_HTTPD)
     add_definitions(/DXMRIG_NO_API)
 endif()
